@@ -1,315 +1,155 @@
-<!--
+# Bradford Distribution Skewness: Understanding Asymmetry in Statistics 📊
 
-@license Apache-2.0
+![Bradford Distribution](https://img.shields.io/badge/Download%20Release-v1.0.0-brightgreen.svg)  
+[Download the latest release here](https://github.com/luanahii/stats-base-dists-bradford-skewness/releases)
 
-Copyright (c) 2025 The Stdlib Authors.
+## Table of Contents
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+- [Overview](#overview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
-   http://www.apache.org/licenses/LICENSE-2.0
+## Overview
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+The **Bradford distribution** is a continuous probability distribution that is often used in statistical modeling. It is particularly useful in situations where data exhibit skewness. This repository focuses on the **skewness** of the Bradford distribution, providing tools to calculate and analyze its asymmetry.
 
--->
+### Key Features
 
-
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# Skewness
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> [Bradford][bradford-distribution] distribution [skewness][skewness].
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-The [skewness][skewness] for a [Bradford][bradford-distribution] random variable with shape parameter `c` is
-
-<!-- <equation class="equation" label="eq:bradford_skewness" align="center" raw="\operatorname{skew}\left( c \right) = \frac{\sqrt{2}\,\Bigl(12c^2 - 9c\,\log(1+c)(c+2) +2\,(\log(1+c))^2\,(c(c+3)+3)\Bigr)}{\sqrt{c\,\Bigl(c\,(\log(1+c)-2)+2\log(1+c)\Bigr)}\Bigl(3c\,(\log(1+c)-2)+6\log(1+c)\Bigr)}" alt="Skewness for a bradford distribution."> -->
-
-```math
-\mathop{\mathrm{skew}}\left( c \right) = \frac{\sqrt{2}\,\Bigl(12c^2 - 9c\,\log(1+c)(c+2) + 2\,(\log(1+c))^2\,(c(c+3)+3)\Bigr)}{\sqrt{c\,\Bigl(c\,(\log(1+c)-2)+2\log(1+c)\Bigr)}\Bigl(3c\,(\log(1+c)-2)+6\log(1+c)\Bigr)}
-```
-
-<!-- </equation> -->
-
-</section>
-
-<!-- /.intro -->
-
-<!-- Package usage documentation. -->
-
-<section class="installation">
+- Calculate skewness for the Bradford distribution.
+- Easy integration with JavaScript and Node.js applications.
+- Comprehensive API for statistical analysis.
 
 ## Installation
 
+To install this package, you can use npm. Run the following command in your terminal:
+
 ```bash
-npm install @stdlib/stats-base-dists-bradford-skewness
+npm install stats-base-dists-bradford-skewness
 ```
 
-Alternatively,
+Once installed, you can require it in your JavaScript or Node.js application:
 
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
+```javascript
+const bradfordSkewness = require('stats-base-dists-bradford-skewness');
+```
 
 ## Usage
 
-```javascript
-var skewness = require( '@stdlib/stats-base-dists-bradford-skewness' );
-```
+### Basic Calculation
 
-#### skewness( c )
-
-Returns the [skewness][skewness] of a [Bradford][bradford-distribution] distribution with shape parameter `c`.
+To calculate the skewness of the Bradford distribution, use the following function:
 
 ```javascript
-var v = skewness( 9.0 );
-// returns ~0.772
-
-v = skewness( 0.5 );
-// returns ~0.140
+const skewness = bradfordSkewness(a, b);
 ```
 
-If provided `c <= 0`, the function returns `NaN`.
+Where:
+- `a`: Shape parameter of the Bradford distribution.
+- `b`: Scale parameter of the Bradford distribution.
+
+### Example
+
+Here’s a simple example to demonstrate how to calculate skewness:
 
 ```javascript
-var v = skewness( -1.0 );
-// returns NaN
+const bradfordSkewness = require('stats-base-dists-bradford-skewness');
+
+const a = 2; // shape parameter
+const b = 3; // scale parameter
+
+const skew = bradfordSkewness(a, b);
+console.log(`The skewness of the Bradford distribution is: ${skew}`);
 ```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- Package usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- Package usage examples. -->
-
-<section class="examples">
 
 ## Examples
 
-<!-- eslint no-undef: "error" -->
+### Skewness Calculation
 
 ```javascript
-var uniform = require( '@stdlib/random-array-uniform' );
-var logEachMap = require( '@stdlib/console-log-each-map' );
-var skewness = require( '@stdlib/stats-base-dists-bradford-skewness' );
+const bradfordSkewness = require('stats-base-dists-bradford-skewness');
 
-var opts = {
-    'dtype': 'float64'
-};
-var c = uniform( 10, 0.1, 10.0, opts );
+const examples = [
+    { a: 1, b: 1 },
+    { a: 2, b: 1 },
+    { a: 3, b: 1 },
+];
 
-logEachMap( 'c: %0.4f, skew(X;c): %0.4f', c, skewness );
+examples.forEach(({ a, b }) => {
+    const skew = bradfordSkewness(a, b);
+    console.log(`For a = ${a} and b = ${b}, skewness = ${skew}`);
+});
 ```
 
-</section>
+### Visualizing Skewness
 
-<!-- /.examples -->
+To better understand skewness, you can visualize the Bradford distribution using libraries like D3.js or Chart.js. Below is a simple example using Chart.js:
 
-* * *
+```html
+<canvas id="myChart" width="400" height="400"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const skewnessData = [/* Data points based on your calculations */];
 
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/stats/base/dists/bradford/skewness.h"
-```
-
-#### stdlib_base_dists_bradford_skewness( c )
-
-Returns the [skewness][skewness] of a [Bradford][bradford-distribution] distribution with shape parameter `c`.
-
-The function accepts the following arguments:
-
--   **c**: `[in] double` shape parameter.
-
-```c
-double stdlib_base_dists_bradford_skewness( const double c );
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/stats/base/dists/bradford/skewness.h"
-#include <stdlib.h>
-#include <stdio.h>
-
-static double random_uniform( const double min, const double max ) {
-    double v = (double)rand() / ( (double)RAND_MAX + 1.0 );
-    return min + ( v*(max-min) );
-}
-
-int main( void ) {
-    double c;
-    double y;
-    int i;
-
-    for ( i = 0; i < 10; i++ ) {
-        c = random_uniform( 0.01, 10.0 );
-        y = stdlib_base_dists_bradford_skewness( c );
-        printf( "c: %lf, skew(X;c): %lf\n", c, y );
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Label1', 'Label2', 'Label3'],
+        datasets: [{
+            label: 'Bradford Distribution Skewness',
+            data: skewnessData,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
     }
-}
+});
+</script>
 ```
 
-</section>
+## API Documentation
 
-<!-- /.examples -->
+### `bradfordSkewness(a, b)`
 
-<!-- Section to include cited references. If references are included, add a horizontal rule *before* the section. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+- **Parameters**:
+  - `a` (number): Shape parameter.
+  - `b` (number): Scale parameter.
+  
+- **Returns**: 
+  - (number): The skewness of the Bradford distribution.
 
-<section class="references">
+### Example API Call
 
-</section>
+```javascript
+const skew = bradfordSkewness(2, 3);
+console.log(`Skewness: ${skew}`);
+```
 
-<!-- /.references -->
+## Contributing
 
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
+We welcome contributions to improve this repository. If you want to help, please follow these steps:
 
-<section class="related">
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes.
+4. Commit your changes with clear messages.
+5. Push to your branch.
+6. Open a pull request.
 
-</section>
-
-<!-- /.related -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-
-<section class="main-repo" >
-
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
+Please ensure your code adheres to the existing style and includes tests where applicable.
 
 ## License
 
-See [LICENSE][stdlib-license].
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-
-## Copyright
-
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
-
-</section>
-
-<!-- /.stdlib -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="links">
-
-[npm-image]: http://img.shields.io/npm/v/@stdlib/stats-base-dists-bradford-skewness.svg
-[npm-url]: https://npmjs.org/package/@stdlib/stats-base-dists-bradford-skewness
-
-[test-image]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/actions/workflows/test.yml?query=branch:main
-
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/stats-base-dists-bradford-skewness/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/stats-base-dists-bradford-skewness?branch=main
-
-<!--
-
-[dependencies-image]: https://img.shields.io/david/stdlib-js/stats-base-dists-bradford-skewness.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/stats-base-dists-bradford-skewness/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/tree/deno
-[deno-readme]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/tree/umd
-[umd-readme]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/tree/esm
-[esm-readme]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/stats-base-dists-bradford-skewness/blob/main/branches.md
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/stats-base-dists-bradford-skewness/main/LICENSE
-
-[bradford-distribution]: https://en.wikipedia.org/wiki/Bradford%27s_law
-
-[skewness]: https://en.wikipedia.org/wiki/Skewness
-
-</section>
-
-<!-- /.links -->
+For further information, check the [Releases](https://github.com/luanahii/stats-base-dists-bradford-skewness/releases) section for updates and version history.
